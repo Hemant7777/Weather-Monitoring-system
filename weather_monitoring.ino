@@ -28,13 +28,9 @@ WiFiClient client;
 int    HTTP_PORT   = 80;
 RTC_DATA_ATTR int bootCount = 0;
 
-const char* ssid     = "NOVEL (ground floor)";         // The SSID (name) of the Wi-Fi network you want to connect toNOVEL (ground floor)
-const char* password ="Novel#123";
-//const char* ssid     = "NOVEL Java";         // The SSID (name) of the Wi-Fi network you want to connect toNOVEL (ground floor)
-//const char* password ="Novel#123";
+const char* ssid     = "SSID";         // The SSID (name) of the Wi-Fi network you want to connect toNOVEL 
+const char* password ="Password";      // The Password (name) of the Wi-Fi network you want to connect to
 
-//const char* ssid     = "Hemant";// wifi name
-//const char* password = "12345678";// password
 // Define CS pin for the SD card module
 #define SD_CS 5
 String dataMessage;
@@ -45,7 +41,7 @@ void setup() {
   Serial.begin(115200);
   pinMode(DHTPin, INPUT);
   dht.begin();
-  Serial.println("Hemant Weather report Task");
+  Serial.println("My Weather report Task");
   //Increment boot number and print it every reboot
   ++bootCount;
   Serial.println("Boot number: " + String(bootCount));
@@ -189,8 +185,8 @@ void postDataToServer() {
      if (client.connect(server, 443)) {
     Serial.println("connected");
     // Make a HTTP request:
-    Serial.print("GET /My/iotdata.php?humidity=");
-    client.print("GET /My/iotdata.php?humidity=");     //http://localhost/My/iotdata.php?
+    Serial.print("GET /***********.php?humidity=");     //incert your URL
+    client.print("GET /***********.php?humidity=");     //incert your URL
     Serial.println(Humidity);
     client.print(Humidity);
     client.print("&temperature=");
